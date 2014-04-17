@@ -1,0 +1,46 @@
+{
+  "name": "generator-tdg5-bower",
+  "version": "0.0.1",
+  "description": "Yeoman generator for bower components, tdg5 style",
+  "keywords": [
+    "yeoman-generator",
+    "bower",
+    "bower-component",
+    "bower component"
+  ],
+  "homepage": "https://github.com/tdg5/generator-tdg5-bower",
+  "bugs": {
+    "url": "https://github.com/tdg5/generator-tdg5-bower/issues"
+  },
+  "author": "Danny Guinther <dannyguinther@gmail.com> (https://github.com/tdg5)",
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tdg5/generator-tdg5-bower.git"
+  },
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script --reporter spec"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.13.0",
+    "coffee-script": "~1.6.3",
+    "underscore.string": "*"
+  },
+  "devDependencies": {
+    "mocha": "~1.10.0",
+    "coffee-script": "~1.6.3"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "readmeFilename": "README.md",
+  "directories": {
+    "test": "test"
+  },
+  "license": "MIT"
+}

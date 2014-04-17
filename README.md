@@ -1,0 +1,37 @@
+# Generator-bower
+[![Build Status](https://secure.travis-ci.org/tdg5/generator-tdg5-bower.png?branch=master)](https://travis-ci.org/tdg5/generator-tdg5-bower)
+
+Yeoman generator for bower components, tdg5 style.
+
+## Getting Started
+**(1)** Install [yo](https://github.com/yeoman/yo):
+```bash
+  npm install -g yo
+```
+
+**(2)** Install the generator:
+```bash
+  git clone git@github.com:tdg5/generator-tdg5-bower.git
+  cd generator-tdg5-bower
+  npm link
+```
+
+**(3)** Run the generator:
+```bash
+  yo tdg5-bower
+```
+
+**(4)** Test and compile the component with [grunt](https://github.com/gruntjs/grunt):
+```bash
+  grunt
+```
+
+## Contributing
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
+
+## License
+[MIT License](http://en.wikipedia.org/wiki/MIT_License)
