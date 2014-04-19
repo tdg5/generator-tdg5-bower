@@ -1,11 +1,12 @@
 'use strict';
+/* global console, module, require */
+
 var util = require('util');
-var path = require('path');
 var yeoman = require('yeoman-generator');
 var _ = require('underscore.string');
 
 
-function tdg5BowerGenerator(args, options, config) {
+function Tdg5BowerGenerator() {
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
@@ -13,12 +14,12 @@ function tdg5BowerGenerator(args, options, config) {
   });
 
   this.pkg = require('../package.json');
-};
+}
 
-util.inherits(tdg5BowerGenerator, yeoman.generators.NamedBase);
+util.inherits(Tdg5BowerGenerator, yeoman.generators.NamedBase);
 
 
-tdg5BowerGenerator.prototype.askFor = function askFor() {
+Tdg5BowerGenerator.prototype.askFor = function askFor() {
   var done = this.async();
 
   // have Yeoman greet the user.
@@ -43,7 +44,7 @@ tdg5BowerGenerator.prototype.askFor = function askFor() {
   }.bind(this));
 };
 
-tdg5BowerGenerator.prototype.app = function app() {
+Tdg5BowerGenerator.prototype.app = function app() {
   this.mkdir('src');
 
   this.componentName = _.slugify(this.rawName);
@@ -66,7 +67,7 @@ tdg5BowerGenerator.prototype.app = function app() {
   this.template('_test.js', 'test/' + this.componentName + '_test.js');
 };
 
-tdg5BowerGenerator.prototype.projectfiles = function projectfiles() {
+Tdg5BowerGenerator.prototype.projectfiles = function projectfiles() {
   this.copy('editorconfig', '.editorconfig');
   this.copy('files.js', 'files.js');
   this.copy('jshintrc', '.jshintrc');
@@ -74,4 +75,4 @@ tdg5BowerGenerator.prototype.projectfiles = function projectfiles() {
   this.copy('travis.yml', '.travis.yml');
 };
 
-module.exports = tdg5BowerGenerator;
+module.exports = Tdg5BowerGenerator;

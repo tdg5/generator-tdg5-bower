@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "Yeoman generator for bower components, tdg5 style",
   "keywords": [
-    "yeoman-generator",
     "bower",
     "bower-component",
-    "bower component"
+    "bower component",
+    "yeoman-generator"
   ],
   "homepage": "https://github.com/tdg5/generator-tdg5-bower",
   "bugs": {
@@ -18,26 +18,23 @@
     "type": "git",
     "url": "git://github.com/tdg5/generator-tdg5-bower.git"
   },
-  "scripts": {
-    "test": "mocha --compilers coffee:coffee-script --reporter spec"
-  },
   "dependencies": {
     "yeoman-generator": "~0.13.0",
-    "coffee-script": "~1.6.3",
     "underscore.string": "*"
   },
   "devDependencies": {
-    "mocha": "~1.10.0",
-    "coffee-script": "~1.6.3"
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.9",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-mocha-test": "^0.10.2",
+    "load-grunt-tasks": "~0.2.0"
   },
   "engines": {
     "node": ">=0.10.0"
   },
-  "licenses": [
-    {
+  "licenses": [{
       "type": "MIT"
-    }
-  ],
+  }],
   "readmeFilename": "README.md",
   "directories": {
     "test": "test"

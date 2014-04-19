@@ -21,7 +21,7 @@ Yeoman generator for bower components, tdg5 style.
   yo tdg5-bower
 ```
 
-**(4)** Test and compile the component with [grunt](https://github.com/gruntjs/grunt):
+**(4)** Test and jshint with [grunt](https://github.com/gruntjs/grunt):
 ```bash
   grunt
 ```
