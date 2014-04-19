@@ -1,7 +1,11 @@
 {
-  "name": "<%= slug %>",
+  "dependencies": {},
   "description": "<%= description %>",
-  "main": "dist/<%= slug %>.js",
-  "version": "0.0.0",
-  "dependencies": {}
+  "devDependencies": {},
+  "main": [
+    "dist/<%= slug %>.js",
+    "dist/<%= slug %>.min.js"
+  ],
+  "name": "<%= slug %>",
+  "version": "0.0.0"
 }

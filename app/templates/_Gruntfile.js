@@ -10,16 +10,7 @@ module.exports = function (grunt) {
   // Project configuration.
   grunt.initConfig({
     builddir: 'build',
-    pkg: grunt.file.readJSON('package.json'),
     buildtag: '-dev-' + grunt.template.today('yyyy-mm-dd'),
-    meta: {
-      banner: '/**\n' +
-        ' * <%%= pkg.description %>\n' +
-        ' * @version v<%%= pkg.version %><%%= buildtag %>\n' +
-        ' * @link <%%= pkg.homepage %>\n' +
-        ' * @license MIT License, http://www.opensource.org/licenses/MIT\n' +
-        ' */'
-    },
     clean: [ '<%%= builddir %>' ],
     concat: {
       options: {
@@ -40,21 +31,17 @@ module.exports = function (grunt) {
         dest: '<%%= builddir %>/<%%= pkg.name %>.js'
       }
     },
-    uglify: {
-      options: {
-        banner: '<%%= meta.banner %>\n'
-      },
-      build: {
-        files: {
-          '<%%= builddir %>/<%%= pkg.name %>.min.js': ['<banner:meta.banner>', '<%%= concat.build.dest %>']
-        }
+    copy: {
+      dist: {
+        files: [{
+          expand: true,
+          dest: 'dist',
+          filter: 'isFile',
+          flatten: true,
+          src: ['build/*.js']
+        }]
       }
-    },
-    release: {
-      files: ['<%%= pkg.name %>.js', '<%%= pkg.name %>.min.js'],
-      src: '<%%= builddir %>',
-      dest: 'release'
-    },
+    }
     jshint: {
       beforeConcat: {
         src: ['Gruntfile.js', 'src/**/*.js']
@@ -77,19 +64,6 @@ module.exports = function (grunt) {
         noarg: true,
         sub: true,
         unused: true,
-      }
-    },
-    watch: {
-      files: ['./**/*.js'],
-      tasks: ['build']
-    },
-    connect: {
-      server: {},
-      sample: {
-        options:{
-          port: 5555,
-          keepalive: true
-        }
       }
     },
     karma: {
@@ -115,16 +89,33 @@ module.exports = function (grunt) {
         singleRun: true
       }
     },
-    copy: {
-      dist: {
-        files: [{
-          expand: true,
-          dest: 'dist',
-          filter: 'isFile',
-          flatten: true,
-          src: ['build/*.js']
-        }]
+    meta: {
+      banner: '/**\n' +
+        ' * <%%= pkg.description %>\n' +
+        ' * @version v<%%= pkg.version %><%%= buildtag %>\n' +
+        ' * @link <%%= pkg.homepage %>\n' +
+        ' * @license MIT License, http://www.opensource.org/licenses/MIT\n' +
+        ' */'
+    },
+    pkg: grunt.file.readJSON('package.json'),
+    release: {
+      files: ['<%%= pkg.name %>.js', '<%%= pkg.name %>.min.js'],
+      src: '<%%= builddir %>',
+      dest: 'release'
+    },
+    uglify: {
+      options: {
+        banner: '<%%= meta.banner %>\n'
+      },
+      build: {
+        files: {
+          '<%%= builddir %>/<%%= pkg.name %>.min.js': ['<banner:meta.banner>', '<%%= concat.build.dest %>']
+        }
       }
+    },
+    watch: {
+      files: ['./**/*.js'],
+      tasks: ['default']
     }
   });
 
