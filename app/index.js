@@ -68,6 +68,7 @@ Tdg5BowerGenerator.prototype.app = function app() {
 };
 
 Tdg5BowerGenerator.prototype.projectfiles = function projectfiles() {
+  this.copy('gitignore', '.gitignore');
   this.copy('files.js', 'files.js');
   this.copy('LICENSE', 'LICENSE');
   this.copy('travis.yml', '.travis.yml');
