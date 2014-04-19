@@ -1,6 +1,6 @@
 {
   "name": "generator-tdg5-bower",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Yeoman generator for bower components, tdg5 style",
   "keywords": [
     "bower",
