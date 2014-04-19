@@ -27,9 +27,9 @@ module.exports = function (grunt) {
                 'if (typeof module !== "undefined" && typeof exports !== "undefined" && module.exports === exports){\n'+
                 '  module.exports = \'<%= validVariableName %>\';\n'+
                 '}\n\n'+
-                '(function (window, angular, undefined) {\n'+
+                '(function (window, undefined) {\n'+
                 '"use strict";\n',
-        footer: '})(window, window.angular);',
+        footer: '})(window);',
         process: function(src, filepath) {
           return '// Source: ' + filepath + '\n' +
             src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
