@@ -16,8 +16,6 @@ describe('tdg5-bower generator', function () {
 
   it('creates expected files', function (done) {
     var expected = [
-      '.editorconfig',
-      '.jshintrc',
       '.travis.yml',
       'Gruntfile.js',
       'LICENSE',

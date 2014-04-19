@@ -68,9 +68,7 @@ Tdg5BowerGenerator.prototype.app = function app() {
 };
 
 Tdg5BowerGenerator.prototype.projectfiles = function projectfiles() {
-  this.copy('editorconfig', '.editorconfig');
   this.copy('files.js', 'files.js');
-  this.copy('jshintrc', '.jshintrc');
   this.copy('LICENSE', 'LICENSE');
   this.copy('travis.yml', '.travis.yml');
 };
