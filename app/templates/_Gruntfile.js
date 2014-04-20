@@ -13,6 +13,10 @@ module.exports = function (grunt) {
     buildtag: '-dev-' + grunt.template.today('yyyy-mm-dd'),
     clean: [ '<%%= builddir %>' ],
     concat: {
+      build: {
+        dest: '<%%= builddir %>/<%%= pkg.name %>.js',
+        src: files.src
+      },
       options: {
         banner: '<%%= meta.banner %>\n\n'+
                 'if (typeof module !== "undefined" && typeof exports !== "undefined" && module.exports === exports){\n'+
@@ -25,17 +29,13 @@ module.exports = function (grunt) {
           return '// Source: ' + filepath + '\n' +
             src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
         },
-      },
-      build: {
-        src: files.src,
-        dest: '<%%= builddir %>/<%%= pkg.name %>.js'
       }
     },
     copy: {
       dist: {
         files: [{
-          expand: true,
           dest: 'dist',
+          expand: true,
           filter: 'isFile',
           flatten: true,
           src: ['build/*.js']
@@ -43,11 +43,11 @@ module.exports = function (grunt) {
       }
     },
     jshint: {
-      beforeConcat: {
-        src: ['Gruntfile.js', 'src/**/*.js']
-      },
       afterConcat: {
         src: [ '<%%= concat.build.dest %>' ]
+      },
+      beforeConcat: {
+        src: ['Gruntfile.js', 'src/**/*.js']
       },
       options: {
         boss: true,
@@ -55,9 +55,6 @@ module.exports = function (grunt) {
         eqeqeq: true,
         eqnull: true,
         globalstrict: true,
-        globals: {
-          angular: true
-        },
         immed: true,
         latedef: true,
         newcap: true,
@@ -67,25 +64,25 @@ module.exports = function (grunt) {
       }
     },
     karma: {
-      unit: {
-        browsers: [ grunt.option('browser') || 'PhantomJS' ],
-        configFile: 'config/karma/src.conf.js',
-        singleRun: true
-      },
-      debug: {
-        singleRun: false,
-        background: false,
-        configFile: 'config/karma/src.conf.js',
-        browsers: [ grunt.option('browser') || 'Chrome' ]
-      },
       build: {
         browsers: [ grunt.option('browser') || 'PhantomJS' ],
         configFile: 'config/karma/build.conf.js',
         singleRun: true
       },
+      debug: {
+        background: false,
+        browsers: [ grunt.option('browser') || 'Chrome' ],
+        configFile: 'config/karma/src.conf.js',
+        singleRun: false
+      },
       min: {
         browsers: [ grunt.option('browser') || 'PhantomJS' ],
         configFile: 'config/karma/min.conf.js',
+        singleRun: true
+      },
+      unit: {
+        browsers: [ grunt.option('browser') || 'PhantomJS' ],
+        configFile: 'config/karma/src.conf.js',
         singleRun: true
       }
     },
@@ -99,13 +96,13 @@ module.exports = function (grunt) {
     },
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
-      options: {
-        banner: '<%%= meta.banner %>\n'
-      },
       build: {
         files: {
           '<%%= builddir %>/<%%= pkg.name %>.min.js': ['<banner:meta.banner>', '<%%= concat.build.dest %>']
         }
+      },
+      options: {
+        banner: '<%%= meta.banner %>\n'
       }
     },
     watch: {
