@@ -6,6 +6,14 @@
     "dist/<%= slug %>.js",
     "dist/<%= slug %>.min.js"
   ],
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "config",
+    "node_modules",
+    "package.json",
+    "test"
+  ],
   "name": "<%= slug %>",
   "version": "0.0.0"
 }
