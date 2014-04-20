@@ -98,11 +98,6 @@ module.exports = function (grunt) {
         ' */'
     },
     pkg: grunt.file.readJSON('package.json'),
-    release: {
-      files: ['<%%= pkg.name %>.js', '<%%= pkg.name %>.min.js'],
-      src: '<%%= builddir %>',
-      dest: 'release'
-    },
     uglify: {
       options: {
         banner: '<%%= meta.banner %>\n'
