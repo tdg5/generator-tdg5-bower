@@ -1,13 +1,11 @@
 'use strict';
-/*global module:false*/
-/*global require:false*/
+/* global module, require */
 
 module.exports = function (grunt) {
 
   require('load-grunt-tasks')(grunt);
   var files = require('./files').files;
 
-  // Project configuration.
   grunt.initConfig({
     builddir: 'build',
     buildtag: '-dev-' + grunt.template.today('yyyy-mm-dd'),
@@ -44,7 +42,7 @@ module.exports = function (grunt) {
     },
     jshint: {
       afterConcat: {
-        src: [ '<%%= concat.build.dest %>' ]
+        src: ['<%%= concat.build.dest %>']
       },
       beforeConcat: {
         src: ['Gruntfile.js', 'src/**/*.js']
@@ -106,7 +104,7 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-      files: ['./**/*.js'],
+      files: ['**/*.js'],
       tasks: ['default']
     }
   });

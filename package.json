@@ -1,27 +1,13 @@
 {
-  "name": "generator-tdg5-bower",
-  "version": "0.0.7",
-  "description": "Yeoman generator for bower components, tdg5 style",
-  "keywords": [
-    "bower",
-    "bower-component",
-    "bower component",
-    "yeoman-generator"
-  ],
-  "homepage": "https://github.com/tdg5/generator-tdg5-bower",
+  "author": "Danny Guinther <dannyguinther@gmail.com> (https://github.com/tdg5)",
   "bugs": {
     "url": "https://github.com/tdg5/generator-tdg5-bower/issues"
   },
-  "author": "Danny Guinther <dannyguinther@gmail.com> (https://github.com/tdg5)",
-  "main": "app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/tdg5/generator-tdg5-bower.git"
-  },
   "dependencies": {
-    "yeoman-generator": "~0.13.0",
-    "underscore.string": "*"
+    "underscore.string": "*",
+    "yeoman-generator": "~0.13.0"
   },
+  "description": "Yeoman generator for bower components, tdg5 style",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-cli": "~0.1.9",
@@ -29,15 +15,29 @@
     "grunt-mocha-test": "^0.10.2",
     "load-grunt-tasks": "~0.2.0"
   },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "licenses": [{
-      "type": "MIT"
-  }],
-  "readmeFilename": "README.md",
   "directories": {
     "test": "test"
   },
-  "license": "MIT"
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "homepage": "https://github.com/tdg5/generator-tdg5-bower",
+  "keywords": [
+    "bower",
+    "bower-component",
+    "bower component",
+    "yeoman-generator"
+  ],
+  "licenses": [{
+    "type": "MIT",
+    "url": "http://en.wikipedia.org/wiki/MIT_License"
+  }],
+  "main": "app/index.js",
+  "name": "generator-tdg5-bower",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tdg5/generator-tdg5-bower.git"
+  },
+  "version": "0.0.8"
 }

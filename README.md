@@ -1,4 +1,4 @@
-# Generator-bower
+# generator-tdg5-bower
 [![Build Status](https://secure.travis-ci.org/tdg5/generator-tdg5-bower.png?branch=master)](https://travis-ci.org/tdg5/generator-tdg5-bower)
 
 Yeoman generator for bower components, tdg5 style.
@@ -11,19 +11,12 @@ Yeoman generator for bower components, tdg5 style.
 
 **(2)** Install the generator:
 ```bash
-  git clone git@github.com:tdg5/generator-tdg5-bower.git
-  cd generator-tdg5-bower
-  npm link
+  npm install generator-tdg5-bower
 ```
 
 **(3)** Run the generator:
 ```bash
   yo tdg5-bower
-```
-
-**(4)** Test and jshint with [grunt](https://github.com/gruntjs/grunt):
-```bash
-  grunt
 ```
 
 ## Contributing

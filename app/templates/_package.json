@@ -1,7 +1,8 @@
 {
+  "author": "Danny Guinther <dannyguinther@gmail.com> (https://github.com/tdg5)",
   "contributors": [{
-    "name": "Danny Guinther",
     "email": "dannyguinther@gmail.com",
+    "name": "Danny Guinther",
     "web": "https://github.com/tdg5"
   }],
   "dependencies": {},
@@ -28,5 +29,6 @@
     "url": "http://en.wikipedia.org/wiki/MIT_License"
   }],
   "name": "<%= slug %>",
+  "readmeFilename": "README.md",
   "version": "0.0.0"
 }

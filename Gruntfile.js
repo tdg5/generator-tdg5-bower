@@ -7,11 +7,6 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     jshint: {
-      src: [
-        'Gruntfile.js',
-        'app/index.js',
-        'test/*_test.js'
-      ],
       options: {
         boss: true,
         curly: true,
@@ -24,7 +19,12 @@ module.exports = function (grunt) {
         noarg: true,
         sub: true,
         unused: true,
-      }
+      },
+      src: [
+        'Gruntfile.js',
+        'app/index.js',
+        'test/*_test.js'
+      ],
     },
     mochaTest: {
       test: {

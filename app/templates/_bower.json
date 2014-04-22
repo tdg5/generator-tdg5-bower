@@ -1,19 +1,31 @@
 {
+  "authors": ["dannyguinther@gmail.com"],
   "dependencies": {},
   "description": "<%= description %>",
   "devDependencies": {},
-  "main": [
-    "dist/<%= slug %>.js",
-    "dist/<%= slug %>.min.js"
-  ],
   "ignore": [
     "**/.*",
     "bower_components",
     "config",
+    "files.js",
+    "Gruntfile.js",
     "node_modules",
     "package.json",
+    "src",
     "test"
   ],
+  "homepage": "",
+  "keywords": [
+  ],
+  "license": "MIT",
+  "main": [
+    "dist/<%= slug %>.js",
+    "dist/<%= slug %>.min.js"
+  ],
   "name": "<%= slug %>",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "version": "0.0.0"
 }

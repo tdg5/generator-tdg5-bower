@@ -1,10 +1,11 @@
-/*global __dirname, beforeEach, describe, it, require */
+/* global __dirname, beforeEach, describe, it, require */
 'use strict';
 
 var path = require('path');
 var helpers = require('yeoman-generator').test;
 
 describe('tdg5-bower generator', function () {
+
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'tmp'), function (err) {
       if (err) { return done(err); }
@@ -13,6 +14,7 @@ describe('tdg5-bower generator', function () {
       done();
     }.bind(this));
   });
+
 
   it('creates expected files', function (done) {
     var expected = [
@@ -43,4 +45,5 @@ describe('tdg5-bower generator', function () {
       done();
     });
   });
+
 });
