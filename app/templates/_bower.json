@@ -3,6 +3,7 @@
   "dependencies": {},
   "description": "<%= description %>",
   "devDependencies": {},
+  "homepage": "",
   "ignore": [
     "**/.*",
     "bower_components",
@@ -14,7 +15,6 @@
     "src",
     "test"
   ],
-  "homepage": "",
   "keywords": [
   ],
   "license": "MIT",
