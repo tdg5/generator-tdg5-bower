@@ -19,8 +19,7 @@
   ],
   "license": "MIT",
   "main": [
-    "dist/<%= slug %>.js",
-    "dist/<%= slug %>.min.js"
+    "dist/<%= slug %>.js"
   ],
   "name": "<%= slug %>",
   "repository": {
