@@ -68,6 +68,7 @@ module.exports = function (grunt) {
         singleRun: true
       },
       debug: {
+        autoWatch: true,
         background: false,
         browsers: [ grunt.option('browser') || 'Chrome' ],
         configFile: 'config/karma/src.conf.js',
