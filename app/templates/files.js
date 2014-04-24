@@ -16,8 +16,7 @@ var pkgFiles = {
   'karma-src-exclude': [],
   'karma-src': [
     '@karma',
-    'src/' + pkg.name + '.js',
-    'src/**/*.js',
+    '@src',
     '@karma-tests'
   ],
   'karma-tests': [
@@ -25,6 +24,7 @@ var pkgFiles = {
   ],
   src: [
     'src/' + pkg.name + '.js',
+    'src/**/*.js'
   ]
 };
 
