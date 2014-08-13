@@ -39,5 +39,5 @@
     "type": "git",
     "url": "git://github.com/tdg5/generator-tdg5-bower.git"
   },
-  "version": "0.0.10"
+  "version": "0.1.0"
 }
