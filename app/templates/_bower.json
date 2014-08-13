@@ -12,6 +12,7 @@
     "Gruntfile.js",
     "node_modules",
     "package.json",
+    "README.md",
     "src",
     "test"
   ],
@@ -24,7 +25,7 @@
   "name": "<%= slug %>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "<%= repoUrl %>"
   },
   "version": "0.0.0"
 }

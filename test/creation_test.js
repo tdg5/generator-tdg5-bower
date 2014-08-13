@@ -23,6 +23,7 @@ describe('tdg5-bower generator', function () {
       'Gruntfile.js',
       'LICENSE',
       'bower.json',
+      'README.md',
       'config/karma/build.conf.js',
       'config/karma/common.conf.js',
       'config/karma/min.conf.js',
@@ -35,7 +36,8 @@ describe('tdg5-bower generator', function () {
 
     helpers.mockPrompt(this.app, {
       rawName: 'test',
-      description: 'test'
+      description: 'test',
+      repoUrl: 'https://github.com/tdg5/test_component.git'
     });
     this.app.options['skip-install'] = true;
     this.app.run({}, function () {

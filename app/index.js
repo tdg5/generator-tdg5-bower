@@ -21,6 +21,7 @@ util.inherits(Tdg5BowerGenerator, yeoman.generators.NamedBase);
 
 Tdg5BowerGenerator.prototype.askFor = function askFor() {
   var done = this.async();
+  var repoPathRegExp = /^https?:\/\/github\.com\/(.*?)(\.git)?$/;
 
   // have Yeoman greet the user.
   console.log(this.yeoman);
@@ -32,13 +33,21 @@ Tdg5BowerGenerator.prototype.askFor = function askFor() {
   {
     name: 'description',
     message: 'Please provide a short description for your component:'
+  },
+  {
+    name: 'repoUrl',
+    message: 'Please provide a URL for the component git repository:'
   }];
 
   this.prompt(prompts, function (props) {
     this.rawName = props.rawName;
     this.slug = _.slugify(this.rawName);
     this.description = props.description;
+    this.repoUrl = props.repoUrl;
     this.validVariableName = _.capitalize(_.slugify(this.rawName)).replace('-','');
+
+    var repoPathMatches = this.repoUrl.match(repoPathRegExp);
+    this.repoPath = repoPathMatches[1];
 
     done();
   }.bind(this));
@@ -53,6 +62,7 @@ Tdg5BowerGenerator.prototype.app = function app() {
   this.template('_Gruntfile.js', 'Gruntfile.js');
   this.copy('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
+  this.template('_README.md', 'README.md');
 
   // Set up various karma test environments
   this.mkdir('config');
