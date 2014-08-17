@@ -10,6 +10,28 @@ module.exports = function (grunt) {
     builddir: 'build',
     buildtag: '-dev-' + grunt.template.today('yyyy-mm-dd'),
     clean: [ '<%%= builddir %>' ],
+    meta: {
+      banner: '/**\n' +
+      ' * <%%= pkg.description %>\n' +
+      ' * @version v<%%= pkg.version %><%%= buildtag %>\n' +
+      ' * @link <%%= pkg.homepage %>\n' +
+      ' * @license MIT License, http://www.opensource.org/licenses/MIT\n' +
+      ' */'
+    },
+    pkg: grunt.file.readJSON('package.json'),
+
+    /* Plugins */
+    browserSync: {
+      test: {
+        bsFiles: {
+          src : './**/*.js'
+        },
+        options: {
+          proxy: 'localhost:9876',
+          watchTask: true
+        }
+      }
+    },
     concat: {
       build: {
         dest: '<%%= builddir %>/<%%= pkg.name %>.js',
@@ -72,6 +94,7 @@ module.exports = function (grunt) {
         background: false,
         browsers: [ grunt.option('browser') || 'Chrome' ],
         configFile: 'config/karma/src.conf.js',
+        runnerPort: 9876,
         singleRun: false
       },
       min: {
@@ -85,15 +108,6 @@ module.exports = function (grunt) {
         singleRun: true
       }
     },
-    meta: {
-      banner: '/**\n' +
-        ' * <%%= pkg.description %>\n' +
-        ' * @version v<%%= pkg.version %><%%= buildtag %>\n' +
-        ' * @link <%%= pkg.homepage %>\n' +
-        ' * @license MIT License, http://www.opensource.org/licenses/MIT\n' +
-        ' */'
-    },
-    pkg: grunt.file.readJSON('package.json'),
     uglify: {
       build: {
         files: {
@@ -113,4 +127,5 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['karma:unit', 'build']);
   grunt.registerTask('build', 'Perform a normal build', ['jshint:beforeConcat', 'concat', 'jshint:afterConcat', 'karma:build', 'uglify', 'karma:min']);
   grunt.registerTask('dist', 'Perform a clean build', ['clean', 'build', 'copy:dist']);
+  grunt.registerTask('syncTest', ['browserSync:test', 'watch']);
 };
