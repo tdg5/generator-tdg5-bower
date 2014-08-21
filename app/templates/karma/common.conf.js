@@ -9,8 +9,8 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
     logLevel: config.LOG_INFO,
     plugins: [
-      'karma-jasmine',
       'karma-chrome-launcher',
+      'karma-jasmine',
       'karma-phantomjs-launcher'
     ],
     port: 9876,
