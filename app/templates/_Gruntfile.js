@@ -2,13 +2,10 @@
 /* global module, process, require */
 
 module.exports = function (grunt) {
-  var files, submitCoverage;
+  var defaultTasks, files;
 
   require('load-grunt-tasks')(grunt);
   files = require('./files').files;
-
-  /* Only submit coverage reports from travis */
-  submitCoverage = !!process.env.CI;
 
   grunt.initConfig({
     builddir: 'build',
@@ -70,7 +67,7 @@ module.exports = function (grunt) {
       options: {
         coverage_dir: 'tmp/coverage',
         debug: false,
-        dryRun: !submitCoverage,
+        dryRun: false,
         force: true,
         recursive: true
       }
@@ -137,7 +134,12 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('default', ['karma:unit', 'build', 'coveralls']);
+  defaultTasks = ['karma:unit', 'build'];
+
+  /* Only submit coverage reports from travis */
+  if(!!process.env.CI) { defaultTasks.push('coveralls'); }
+
+  grunt.registerTask('default', defaultTasks);
   grunt.registerTask('build', 'Perform a normal build', ['jshint:beforeConcat', 'concat', 'jshint:afterConcat', 'karma:build', 'uglify', 'karma:min']);
   grunt.registerTask('dist', 'Perform a clean build', ['clean', 'build', 'copy:dist']);
   grunt.registerTask('syncTest', ['browserSync:test', 'watch']);
