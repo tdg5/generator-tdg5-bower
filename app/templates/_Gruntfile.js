@@ -1,15 +1,18 @@
 'use strict';
-/* global module, require */
+/* global module, process, require */
 
 module.exports = function (grunt) {
+  var files, submitCoverage;
 
   require('load-grunt-tasks')(grunt);
-  var files = require('./files').files;
+  files = require('./files').files;
+
+  /* Only submit coverage reports from travis */
+  submitCoverage = !!process.env.CI;
 
   grunt.initConfig({
     builddir: 'build',
     buildtag: '-dev-' + grunt.template.today('yyyy-mm-dd'),
-    clean: [ '<%%= builddir %>' ],
     meta: {
       banner: '/**\n' +
       ' * <%%= pkg.description %>\n' +
@@ -32,6 +35,7 @@ module.exports = function (grunt) {
         }
       }
     },
+    clean: [ '<%%= builddir %>' ],
     concat: {
       build: {
         dest: '<%%= builddir %>/<%%= pkg.name %>.js',
@@ -60,6 +64,15 @@ module.exports = function (grunt) {
           flatten: true,
           src: ['build/*.js']
         }]
+      }
+    },
+    coveralls: {
+      options: {
+        coverage_dir: 'tmp/coverage',
+        debug: false,
+        dryRun: !submitCoverage,
+        force: true,
+        recursive: true
       }
     },
     jshint: {
@@ -124,7 +137,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('default', ['karma:unit', 'build']);
+  grunt.registerTask('default', ['karma:unit', 'build', 'coveralls']);
   grunt.registerTask('build', 'Perform a normal build', ['jshint:beforeConcat', 'concat', 'jshint:afterConcat', 'karma:build', 'uglify', 'karma:min']);
   grunt.registerTask('dist', 'Perform a clean build', ['clean', 'build', 'copy:dist']);
   grunt.registerTask('syncTest', ['browserSync:test', 'watch']);
